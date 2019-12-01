@@ -1,0 +1,31 @@
+﻿<!--來源要加這行-->
+@model lonelykite.ViewModels.RandomMovieViewModel
+@{
+    ViewBag.Title = "Random";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--加入動態CSS class-->
+@{
+    var className = Model.Customers.Count > 0 ? "popular" : null;
+}
+
+<h2 calss="@className">@Model.Movie.Name</h2>
+
+@if (Model.Customers.Count == 0)
+{
+    <p>沒有被出租的movie</p>
+}
+else
+{
+    <ul>
+        @foreach (var customer in Model.Customers)
+        {
+            <li>@customer.Name</li>
+        }
+    </ul>
+}
+
+
+
+
